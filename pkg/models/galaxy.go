@@ -1,7 +1,9 @@
 package models
 
+import "github.com/google/uuid"
+
 type Galaxy struct {
-	ID              string // UUID
+	ID              uuid.UUID // UUID
 	Name            string
 	Supercluser     string // Foreign Key
 	NumberOfPlanets int

@@ -7,20 +7,22 @@ import (
 	"cosmicCargoNetwork/pkg/models"
 
 	"github.com/labstack/echo/v4"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 func HandleGet(c echo.Context) error {
-	newPlanet := models.Planet{
-		ID:            "Holder",
-		Name:          "Aldaaron",
-		Galaxy:        "Hoh",
-		Climate:       models.Tundra,
-		NumberOfDocks: 88,
-		TaxRate:       0.0,
-		PoliticalFee:  0.0,
+	dsn := "host=localhost user=postgres password=root dbname=cosmiccargonetwork port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
 	}
 
-	fmt.Printf("Printing new planet %v", newPlanet)
+	name := c.QueryParam("name")
+	fmt.Printf("Printing the name %v", name)
 
-	return c.JSON(http.StatusOK, newPlanet)
+	var planet models.Planet
+	db.First(&planet, "name = ?", &name) // find product with code D42
+
+	return c.JSON(http.StatusOK, planet)
 }

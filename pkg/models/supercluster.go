@@ -1,7 +1,9 @@
 package models
 
+import "github.com/google/uuid"
+
 type Supercluster struct {
-	ID               string // UUID
+	ID               uuid.UUID // UUID
 	Name             string
 	NumberOfGalaxies string
 }
