@@ -20,8 +20,12 @@ func main() {
 
 	e := echo.New()
 
-	e.GET("/planets:name", api.HandleGet)
-	e.GET("/planets", api.HandleGetAll)
+	e.GET("/planets", api.HandleGetAllPlanets)
+	e.GET("/planets:name", api.HandleGetPlanetByName)
+	e.GET("/galaxies", api.HandleGetAllGalaxies)
+	e.GET("/galaxies:name", api.HandleGetGalaxyByName)
+	e.GET("/superclusters", api.HandleGetAllSuperclusters)
+	e.GET("/superclusters:name", api.HandleGetSuperclusterByName)
 	// GET shipping quote
 	// POST shipping lock in
 	// POST distance or GET?

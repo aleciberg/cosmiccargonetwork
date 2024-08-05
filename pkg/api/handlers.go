@@ -13,7 +13,7 @@ import (
 
 const dsn = "host=localhost user=postgres password=root dbname=cosmiccargonetwork port=5432 sslmode=disable TimeZone=Asia/Shanghai"
 
-func HandleGet(c echo.Context) error {
+func HandleGetPlanetByName(c echo.Context) error {
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
@@ -32,7 +32,7 @@ func HandleGet(c echo.Context) error {
 	return c.JSON(http.StatusOK, planet)
 }
 
-func HandleGetAll(c echo.Context) error {
+func HandleGetAllPlanets(c echo.Context) error {
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, "failed to connect to the database")
@@ -44,4 +44,70 @@ func HandleGetAll(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, planets)
+}
+
+func HandleGetAllGalaxies(c echo.Context) error {
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, "failed to connect to the database")
+	}
+
+	var galaxies []models.Galaxy
+	if err := db.Find(&galaxies).Error; err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, "failed to fetch galaxies")
+	}
+
+	return c.JSON(http.StatusOK, galaxies)
+}
+
+func HandleGetGalaxyByName(c echo.Context) error {
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	name := c.QueryParam("name")
+
+	var galaxy models.Galaxy
+	if err := db.First(&galaxy, "name = ?", name).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return echo.NewHTTPError(http.StatusNotFound, "galaxy not found")
+		}
+		return echo.NewHTTPError(http.StatusInternalServerError, "database error")
+	}
+
+	return c.JSON(http.StatusOK, galaxy)
+}
+
+func HandleGetAllSuperclusters(c echo.Context) error {
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, "failed to connect to the database")
+	}
+
+	var superclusters []models.Supercluster
+	if err := db.Find(&superclusters).Error; err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, "failed to fetch superclusters")
+	}
+
+	return c.JSON(http.StatusOK, superclusters)
+}
+
+func HandleGetSuperclusterByName(c echo.Context) error {
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	name := c.QueryParam("name")
+
+	var supercluster models.Supercluster
+	if err := db.First(&supercluster, "name = ?", name).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return echo.NewHTTPError(http.StatusNotFound, "supercluster not found")
+		}
+		return echo.NewHTTPError(http.StatusInternalServerError, "database error")
+	}
+
+	return c.JSON(http.StatusOK, supercluster)
 }
