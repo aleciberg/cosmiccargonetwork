@@ -114,4 +114,6 @@ func HandleGetSuperclusterByName(c echo.Context) error {
 
 func GetShippingQuote(c echo.Context) error {
 	// need to handle business logic here and return a quote
+
+	return c.JSON(http.StatusOK, "")
 }
