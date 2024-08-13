@@ -1,47 +1,48 @@
 CREATE TABLE cargo_categories (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid();,
     category_class VARCHAR(255) NOT NULL,
+    category_class_id INT NOT NULL,
     category_desc VARCHAR(255) NOT NULL,
-    category_premium INT
+    category_premium_percentage INT
 );
 
 CREATE TABLE cargo_classes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid();,
     category_class VARCHAR(255) NOT NULL,
-    base_rate INT NOT NULL
+    base_fee INT NOT NULL
 )
 
-INSERT INTO cargo_classes (catgegory_class, base_rate) VALUES 
-    ("Vehicles, Personal", 100)
-    ("Vehicles, Commercial", 100)
-    ("Vehicles, Government", 100)
-    ("Vehicle Parts", 100)
-    ("Marine Vehicle, Personal", 100)
+INSERT INTO cargo_classes (catgegory_class, base_fee) VALUES 
+    ("Vehicles, Personal", 1000)
+    ("Vehicles, Commercial", 1000)
+    ("Vehicles, Government", 1000)
+    ("Vehicle Parts", 1000)
+    ("Marine Vehicle, Personal", 1000)
     ("Electronics, Consumer", 100)
-    ("Electronics, Commercial", 100)
-    ("Electronics, Government", 100)
-    ("Appliances", 100)
-    ("Home & Furniture", 100)
-    ("Construction Equipment", 100)
-    ("Fashion", 100)
-    ("Hobby", 100)
-    ("Sports Equipment", 100)
-    ("Hobby", 100)
-    ("Agriculture & Animals", 100)
-    ("Commercial Equipment", 100)
-    ("Weapons, Personal", 100)
-    ("Weapons, Commercial", 100)
-    ("Weapons, Government", 100)
-    ("Electronics, Personal", 100)
-    ("Electronics, Commercial", 100)
-    ("Electronics, Government", 100)
-    ("Educational", 100)
-    ("Safety Equipment", 100)
-    ("Construction Materials, Personal", 100)
-    ("Construction Materials, Commercial", 100)
-    ("Construction Materials, Government" 100)
+    ("Electronics, Commercial", 1000)
+    ("Electronics, Government", 1000)
+    ("Appliances", 1000)
+    ("Home & Furniture", 1000)
+    ("Construction Equipment", 1000)
+    ("Fashion", 1000)
+    ("Hobby", 1000)
+    ("Sports Equipment", 1000)
+    ("Hobby", 1000)
+    ("Agriculture & Animals", 1000)
+    ("Commercial Equipment", 1000)
+    ("Weapons, Personal", 1000)
+    ("Weapons, Commercial", 1000)
+    ("Weapons, Government", 1000)
+    ("Electronics, Personal", 1000)
+    ("Electronics, Commercial", 1000)
+    ("Electronics, Government", 1000)
+    ("Educational", 1000)
+    ("Safety Equipment", 1000)
+    ("Construction Materials, Personal", 1000)
+    ("Construction Materials, Commercial", 1000)
+    ("Construction Materials, Government" 1000)
 
-INSERT INTO cargo_categories (category_class, category_desc, category_premium) VALUES
+INSERT INTO cargo_categories (category_class, category_desc, category_premium_percentage) VALUES
     -- Vehicles
     ('Vehicles, Personal', 'Cars', 100),
     ('Vehicles, Commercial', 'Cars', 100),

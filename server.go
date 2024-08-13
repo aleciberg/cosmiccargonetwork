@@ -26,7 +26,7 @@ func main() {
 	e.GET("/galaxies:name", api.HandleGetGalaxyByName)
 	e.GET("/superclusters", api.HandleGetAllSuperclusters)
 	e.GET("/superclusters:name", api.HandleGetSuperclusterByName)
-	// GET shipping quote
+	e.GET("/shipping", api.GetShippingQuote)
 	// POST shipping lock in
 	// POST distance or GET?
 	// POST availability
