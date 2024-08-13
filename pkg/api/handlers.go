@@ -111,3 +111,9 @@ func HandleGetSuperclusterByName(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, supercluster)
 }
+
+func GetShippingQuote(c echo.Context) error {
+	// need to handle business logic here and return a quote
+
+	return c.JSON(http.StatusOK, "")
+}
