@@ -2,9 +2,11 @@ package api
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 
 	"cosmicCargoNetwork/pkg/models"
+	"cosmicCargoNetwork/pkg/utils"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/driver/postgres"
@@ -113,7 +115,31 @@ func HandleGetSuperclusterByName(c echo.Context) error {
 }
 
 func GetShippingQuote(c echo.Context) error {
-	// need to handle business logic here and return a quote
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
 
-	return c.JSON(http.StatusOK, "")
+	var request models.ShippingRequest
+	err = c.Bind(&request)
+	if err != nil {
+		fmt.Printf("Printing the err %v", err)
+		return c.String(http.StatusBadRequest, "bad request")
+	}
+
+	var cargoCategory models.CargoCategory
+	err = db.First(&cargoCategory, request.CargoClass).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return c.String(http.StatusBadRequest, "Incorrect Cargo Class")
+	}
+
+	var cargoClass models.CargoClass
+	err = db.First(&cargoClass, "category_class = ?", cargoCategory.CategoryClass).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return c.String(http.StatusBadRequest, "Incorrect Cargo Class")
+	}
+
+	initialFee := utils.ShippingRateCalc(cargoClass.BaseFee, cargoCategory.CategoryPremiumPercentage, request.Units)
+
+	return c.JSON(http.StatusOK, initialFee)
 }
