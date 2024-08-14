@@ -2,6 +2,7 @@ package api
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 
 	"cosmicCargoNetwork/pkg/models"
@@ -113,7 +114,17 @@ func HandleGetSuperclusterByName(c echo.Context) error {
 }
 
 func GetShippingQuote(c echo.Context) error {
-	// need to handle business logic here and return a quote
+	_, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
 
-	return c.JSON(http.StatusOK, "")
+	var request models.ShippingRequest
+	err = c.Bind(&request)
+	if err != nil {
+		fmt.Printf("Printing the err %v", err)
+		return c.String(http.StatusBadRequest, "bad request")
+	}
+
+	return c.JSON(http.StatusOK, request)
 }
