@@ -139,6 +139,11 @@ func GetShippingQuote(c echo.Context) error {
 		return c.String(http.StatusBadRequest, "Incorrect Cargo Class")
 	}
 
+	fmt.Printf("Quoting: %v\n", cargoCategory.CategoryDesc)
+	fmt.Printf("Printing fees for base fee %v\n", cargoClass.BaseFee)
+	fmt.Printf("Printing fees for premium %v\n", cargoCategory.CategoryPremiumPercentage)
+	fmt.Printf("Printing units %v\n", request.Units)
+
 	initialFee := utils.ShippingRateCalc(cargoClass.BaseFee, cargoCategory.CategoryPremiumPercentage, request.Units)
 
 	return c.JSON(http.StatusOK, initialFee)
