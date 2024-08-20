@@ -120,7 +120,7 @@ func GetShippingQuote(c echo.Context) error {
 		panic("failed to connect database")
 	}
 
-	var request models.ShippingRequest
+	var request models.ShippingQuoteRequest
 	err = c.Bind(&request)
 	if err != nil {
 		fmt.Printf("Printing the err %v", err)
@@ -140,9 +140,14 @@ func GetShippingQuote(c echo.Context) error {
 	}
 
 	fmt.Printf("Quoting: %v\n", cargoCategory.CategoryDesc)
-	fmt.Printf("Printing fees for base fee %v\n", cargoClass.BaseFee)
-	fmt.Printf("Printing fees for premium %v\n", cargoCategory.CategoryPremiumPercentage)
 	fmt.Printf("Printing units %v\n", request.Units)
+	fmt.Printf("Printing fees for base fee %v\n", cargoClass.BaseFee)
+	fmt.Printf("Printing fees for premium %v%%", float64(cargoCategory.CategoryPremiumPercentage)/100)
+
+	// Save to Quotes Table
+	// Need DB Migrations
+	// ID of request could be token that is returned and reference? 
+	// Save date valid till?  Or add as a feature later
 
 	initialFee := utils.ShippingRateCalc(cargoClass.BaseFee, cargoCategory.CategoryPremiumPercentage, request.Units)
 

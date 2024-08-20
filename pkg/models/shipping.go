@@ -4,7 +4,7 @@ import (
 	"github.com/google/uuid"
 )
 
-type ShippingRequest struct {
+type ShippingQuoteRequest struct {
 	ShipmentDate         string    `json:"shipmentDate"`
 	OriginPlanet         string    `json:"originPlanet"`
 	DestinationPlanet    string    `json:"destinationPlanet"`
@@ -15,7 +15,7 @@ type ShippingRequest struct {
 	Recipient            string    `json:"recipeint"`
 }
 
-type ShippingResponse struct {
-	Token uuid.UUID
+type ShippingQuoteResponse struct {
+	ID    uuid.UUID
 	Price int
 }
