@@ -1,4 +1,4 @@
-# ![Cosmic Cargo Network](./assets/image_fx_.jpg)
+# ![Cosmic Cargo Network](./assets/image_fx_.png)
 
 ## Cosmic Cargo Network
 
