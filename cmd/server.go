@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/labstack/echo/v4"
 
-	"cosmicCargoNetwork/config"
-	"cosmicCargoNetwork/pkg/api"
+	"cosmicCargoNetwork/internal/api"
+	"cosmicCargoNetwork/pkg/config"
 )
 
 func main() {

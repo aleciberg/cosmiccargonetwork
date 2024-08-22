@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"cosmicCargoNetwork/pkg/models"
-	"cosmicCargoNetwork/pkg/utils"
+	"cosmicCargoNetwork/internal/api/models"
+	"cosmicCargoNetwork/internal/repo"
+	"cosmicCargoNetwork/internal/utils"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/driver/postgres"
@@ -139,15 +140,12 @@ func GetShippingQuote(c echo.Context) error {
 		return c.String(http.StatusBadRequest, "Incorrect Cargo Class")
 	}
 
-	fmt.Printf("Quoting: %v\n", cargoCategory.CategoryDesc)
-	fmt.Printf("Printing units %v\n", request.Units)
-	fmt.Printf("Printing fees for base fee %v\n", cargoClass.BaseFee)
-	fmt.Printf("Printing fees for premium %v%%", float64(cargoCategory.CategoryPremiumPercentage)/100)
-
 	initialFee := utils.ShippingRateCalc(cargoClass.BaseFee, cargoCategory.CategoryPremiumPercentage, request.Units)
 
-	// Save to quotes table
-	
+	saveQuote := repo.MapToDB(request, initialFee)
+	if err := db.Create(&saveQuote).Error; err != nil {
+		return c.String(http.StatusInternalServerError, "Error Saving Shipping Quote")
+	}
 
 	return c.JSON(http.StatusOK, initialFee)
 }
