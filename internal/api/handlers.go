@@ -147,5 +147,10 @@ func GetShippingQuote(c echo.Context) error {
 		return c.String(http.StatusInternalServerError, "Error Saving Shipping Quote")
 	}
 
-	return c.JSON(http.StatusOK, initialFee)
+	shippingQuoteResponse := models.ShippingQuoteResponse{
+		ID:    saveQuote.ID,
+		Price: initialFee,
+	}
+
+	return c.JSON(http.StatusOK, shippingQuoteResponse)
 }

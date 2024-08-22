@@ -19,5 +19,5 @@ type ShippingQuoteRequest struct {
 
 type ShippingQuoteResponse struct {
 	ID    uuid.UUID
-	Price int
+	Price float64
 }
