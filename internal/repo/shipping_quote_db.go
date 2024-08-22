@@ -7,13 +7,6 @@ import (
 	"github.com/google/uuid"
 )
 
-// type ShippingQuoteDB struct {
-// 	models.ShippingQuoteRequest
-// 	ID        uuid.UUID `db:"id"`
-// 	QuoteDate time.Time `db:"quote_date"`
-// 	Quote     float64   `db:"quote"`
-// }
-
 type ShippingQuoteDB struct {
 	ID                   uuid.UUID `db:"id"`
 	QuoteDate            time.Time `db:"quote_date"`
@@ -28,14 +21,6 @@ type ShippingQuoteDB struct {
 	Quote                float64   `db:"quote"`
 }
 
-//	func MapToDB(request models.ShippingQuoteRequest, quote float64) ShippingQuoteDB {
-//		return ShippingQuoteDB{
-//			ShippingQuoteRequest: request,
-//			ID:                   uuid.New(),
-//			QuoteDate:            time.Now(),
-//			Quote:                quote,
-//		}
-//	}
 func MapToDB(r models.ShippingQuoteRequest, quote float64) ShippingQuoteDB {
 	return ShippingQuoteDB{
 		ID:                   uuid.New(),

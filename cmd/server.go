@@ -9,28 +9,19 @@ import (
 
 func main() {
 	config.DatabaseInit()
-	gorm := config.DB()
-
-	dbGorm, err := gorm.DB()
-	if err != nil {
-		panic(err)
-	}
-
-	dbGorm.Ping()
-
+	db := config.DB()
 	e := echo.New()
 
-	e.GET("/planets", api.HandleGetAllPlanets)
-	e.GET("/planets:name", api.HandleGetPlanetByName)
-	e.GET("/galaxies", api.HandleGetAllGalaxies)
-	e.GET("/galaxies:name", api.HandleGetGalaxyByName)
-	e.GET("/superclusters", api.HandleGetAllSuperclusters)
-	e.GET("/superclusters:name", api.HandleGetSuperclusterByName)
-	e.POST("/shipping", api.GetShippingQuote)
-	// POST shipping lock in
-	// POST distance or GET?
-	// POST availability
-	// GET Discounted
+	handler := api.NewHandler(db)
+
+	e.GET("/planets", handler.HandleGetAllPlanets)
+	e.GET("/planets:name", handler.HandleGetPlanetByName)
+	e.GET("/galaxies", handler.HandleGetAllGalaxies)
+	e.GET("/galaxies:name", handler.HandleGetGalaxyByName)
+	e.GET("/superclusters", handler.HandleGetAllSuperclusters)
+	e.GET("/superclusters:name", handler.HandleGetSuperclusterByName)
+	e.POST("/shipping", handler.GetShippingQuote)
+	e.GET("/distance", handler.GetShippingDistance)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
