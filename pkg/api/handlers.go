@@ -144,12 +144,10 @@ func GetShippingQuote(c echo.Context) error {
 	fmt.Printf("Printing fees for base fee %v\n", cargoClass.BaseFee)
 	fmt.Printf("Printing fees for premium %v%%", float64(cargoCategory.CategoryPremiumPercentage)/100)
 
-	// Save to Quotes Table
-	// Need DB Migrations
-	// ID of request could be token that is returned and reference? 
-	// Save date valid till?  Or add as a feature later
-
 	initialFee := utils.ShippingRateCalc(cargoClass.BaseFee, cargoCategory.CategoryPremiumPercentage, request.Units)
+
+	// Save to quotes table
+	
 
 	return c.JSON(http.StatusOK, initialFee)
 }

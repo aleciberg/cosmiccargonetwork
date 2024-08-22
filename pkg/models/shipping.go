@@ -1,14 +1,16 @@
 package models
 
 import (
+	"time"
+
 	"github.com/google/uuid"
 )
 
 type ShippingQuoteRequest struct {
-	ShipmentDate         string    `json:"shipmentDate"`
+	ShipmentDate         time.Time `json:"shipmentDate"`
 	OriginPlanet         string    `json:"originPlanet"`
 	DestinationPlanet    string    `json:"destinationPlanet"`
-	RequiredDeliveryDate string    `json:"requiredDeliveryDate"`
+	RequiredDeliveryDate time.Time `json:"requiredDeliveryDate"`
 	CargoClass           uuid.UUID `json:"cargoCategoryId"`
 	Units                int       `json:"units"`
 	Client               string    `json:"client"`
