@@ -1,0 +1,18 @@
+-- Alter the superclusters table to add coordinates
+ALTER TABLE superclusters
+ADD COLUMN x FLOAT NOT NULL DEFAULT 0.0,
+ADD COLUMN y FLOAT NOT NULL DEFAULT 0.0,
+ADD COLUMN z FLOAT NOT NULL DEFAULT 0.0;
+
+-- Alter the galaxies table to add coordinates
+ALTER TABLE galaxies
+ADD COLUMN x FLOAT NOT NULL DEFAULT 0.0,
+ADD COLUMN y FLOAT NOT NULL DEFAULT 0.0,
+ADD COLUMN z FLOAT NOT NULL DEFAULT 0.0;
+
+-- Alter the planets table to add coordinates
+ALTER TABLE planets
+ADD COLUMN x FLOAT NOT NULL DEFAULT 0.0,
+ADD COLUMN y FLOAT NOT NULL DEFAULT 0.0,
+ADD COLUMN z FLOAT NOT NULL DEFAULT 0.0;
+
