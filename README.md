@@ -2,9 +2,9 @@
 
 ## Cosmic Cargo Network
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Build Status](https://travis-ci.org/yourusername/cosmiccargonetwork.svg?branch=master)](https://travis-ci.org/yourusername/cosmiccargonetwork)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/cosmiccargonetwork.svg)](https://github.com/yourusername/cosmiccargonetwork/issues)
+##### Cosmic Cargo Network is a mock company I am building to practice Go and other backend concepts. Cosmic Cargo Network is a galactic shipping organization that services 3 superclusters, 6 galaxies, and 50 planets. We provide various APIs from distance calculators to pricing quotes to availability statuses.
+
+#### Work in progress....
 
 ### Table of Contents
 
@@ -22,7 +22,7 @@
 
 Welcome to **Cosmic Cargo Network**! This project aims to create an efficient and scalable network for interstellar cargo transport.
 
-![Project Preview](https://example.com/preview-image.png)
+
 
 ## Features
 
