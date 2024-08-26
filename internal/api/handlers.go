@@ -127,4 +127,18 @@ func (h *Handler) GetShippingQuote(c echo.Context) error {
 
 func (h *Handler) GetShippingDistance(c echo.Context) error {
 	// need a way to calc shipping distance with made up planets
+	distanceRequest := models.ShippingDistanceRequest{
+		OriginPlanet:      c.QueryParam("originPlanet"),
+		DestinationPlanet: c.QueryParam("destinationPlanet"),
+	}
+
+	// Need to use planets UUID not name
+
+	err := distanceRequest.Validate()
+	if err != nil {
+		fmt.Printf("Validation error: %s\n", err.Error())
+		return c.JSON(http.StatusBadRequest, "Missing query parameter")
+	}
+
+	return c.JSON(http.StatusOK, distanceRequest)
 }

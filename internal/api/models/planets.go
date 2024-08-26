@@ -51,6 +51,9 @@ type Planet struct {
 	NumberOfDocks int
 	TaxRate       int
 	PoliticalFee  int
+	XCoordinate   float64
+	YCoordinate   float64
+	ZCoordinate   float64
 }
 
 func (p *Planet) Insert(db *gorm.DB) error {

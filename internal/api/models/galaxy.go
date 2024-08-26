@@ -7,4 +7,7 @@ type Galaxy struct {
 	Name            string
 	Supercluser     string // Foreign Key
 	NumberOfPlanets int
+	XCoordinate     float64
+	YCoordinate     float64
+	ZCoordinate     float64
 }

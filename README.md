@@ -22,14 +22,14 @@
 
 Welcome to **Cosmic Cargo Network**! This project aims to create an efficient and scalable network for interstellar cargo transport.
 
-![Project Preview](https://example.com/preview-image.png)
+Database Layout
+![Database Layout](./assets/db.png)
 
 ## Features
 
-- Real-time tracking of cargo ships
-- Efficient routing algorithms
-- Secure data transmission
-- ...
+- APIs to print all planets, galaxies, superclusters, cargo categories, and cargo classes.
+- Distance calculator (coming soon...)
+- Shipping quote (coming soon....)
 
 ## Installation
 
@@ -56,3 +56,12 @@ go run server.go
 ```
 
 The server is now running at http://localhost:1323
+
+GET /planets
+GET /planets/:name
+GET /galaxies
+GET /galaxies/:name
+GET /superclusters
+GET /superclusters/:name
+
+POST /shipping
