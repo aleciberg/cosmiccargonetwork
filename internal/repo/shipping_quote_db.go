@@ -11,8 +11,8 @@ type ShippingQuoteDB struct {
 	ID                   uuid.UUID `db:"id"`
 	QuoteDate            time.Time `db:"quote_date"`
 	ShipmentDate         time.Time `db:"shipment_date"`
-	OriginPlanet         string    `db:"origin_planet"`
-	DestinationPlanet    string    `db:"destination_planet"`
+	OriginPlanet         uuid.UUID `db:"origin_planet"`
+	DestinationPlanet    uuid.UUID `db:"destination_planet"`
 	RequiredDeliveryDate time.Time `db:"required_delivery_date"`
 	CargoClass           string    `db:"cargo_class"`
 	Units                int       `db:"units"`

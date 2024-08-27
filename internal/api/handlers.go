@@ -3,6 +3,7 @@ package api
 import (
 	"errors"
 	"fmt"
+	"math"
 	"net/http"
 
 	"cosmicCargoNetwork/internal/api/models"
@@ -125,14 +126,34 @@ func (h *Handler) GetShippingQuote(c echo.Context) error {
 	return c.JSON(http.StatusOK, shippingQuoteResponse)
 }
 
+func CalculateDistance(p1, p2 models.Planet) float64 {
+	distance := math.Sqrt(math.Pow(p2.XCoordinate-p1.XCoordinate, 2) + math.Pow(p2.YCoordinate-p1.YCoordinate, 2) + math.Pow(p2.ZCoordinate-p1.ZCoordinate, 2))
+	return math.Round(distance)
+}
+
 func (h *Handler) GetShippingDistance(c echo.Context) error {
-	// need a way to calc shipping distance with made up planets
 	distanceRequest := models.ShippingDistanceRequest{
 		OriginPlanet:      c.QueryParam("originPlanet"),
 		DestinationPlanet: c.QueryParam("destinationPlanet"),
 	}
 
-	// Need to use planets UUID not name
+	var destinationPlanet models.Planet
+	if err := h.DB.First(&destinationPlanet, "name = ?", distanceRequest.DestinationPlanet).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return echo.NewHTTPError(http.StatusNotFound, "planet not found")
+		}
+		return echo.NewHTTPError(http.StatusInternalServerError, "database error")
+	}
+
+	var originPlanet models.Planet
+	if err := h.DB.First(&originPlanet, "name = ?", distanceRequest.OriginPlanet).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return echo.NewHTTPError(http.StatusNotFound, "planet not found")
+		}
+		return echo.NewHTTPError(http.StatusInternalServerError, "database error")
+	}
+
+	distance := CalculateDistance(destinationPlanet, originPlanet)
 
 	err := distanceRequest.Validate()
 	if err != nil {
@@ -140,5 +161,7 @@ func (h *Handler) GetShippingDistance(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "Missing query parameter")
 	}
 
-	return c.JSON(http.StatusOK, distanceRequest)
+	var response = models.ShippingDistanceResponse{ShippingDistanceRequest: distanceRequest, Distance: distance}
+
+	return c.JSON(http.StatusOK, response)
 }
