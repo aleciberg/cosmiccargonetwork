@@ -4,7 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 
 	"cosmicCargoNetwork/internal/api"
-	"cosmicCargoNetwork/pkg/config"
+	"cosmicCargoNetwork/internal/config"
 )
 
 func main() {
