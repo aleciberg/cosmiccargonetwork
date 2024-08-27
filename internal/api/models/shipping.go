@@ -30,7 +30,7 @@ type ShippingDistanceRequest struct {
 
 type ShippingDistanceResponse struct {
 	ShippingDistanceRequest
-	Distance float64 `json:"distance"`
+	Distance float64 `json:"distance"` // Need some unit of measurement.  Kilophase?  Kilolight? 
 }
 
 func (req *ShippingDistanceRequest) Validate() error {
