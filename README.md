@@ -25,7 +25,6 @@ Welcome to **Cosmic Cargo Network**! This project aims to create an efficient an
 Database Layout
 ![Database Layout](./assets/db.png)
 
-
 ## Features
 
 - APIs to print all planets, galaxies, superclusters, cargo categories, and cargo classes.
