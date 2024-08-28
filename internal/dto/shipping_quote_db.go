@@ -1,7 +1,7 @@
 package repo
 
 import (
-	"cosmicCargoNetwork/internal/api/models"
+	"cosmicCargoNetwork/models"
 	"time"
 
 	"github.com/google/uuid"

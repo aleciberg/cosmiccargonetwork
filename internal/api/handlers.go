@@ -6,9 +6,9 @@ import (
 	"math"
 	"net/http"
 
-	"cosmicCargoNetwork/internal/api/models"
-	"cosmicCargoNetwork/internal/repo"
+	repo "cosmicCargoNetwork/internal/dto"
 	"cosmicCargoNetwork/internal/utils"
+	"cosmicCargoNetwork/models"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
