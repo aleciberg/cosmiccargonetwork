@@ -25,6 +25,8 @@ func NewHandler(db *gorm.DB) *Handler {
 func (h *Handler) HandleGetPlanetByName(c echo.Context) error {
 	name := c.QueryParam("name")
 
+	fmt.Printf("Printing name %v ", name)
+
 	var planet models.Planet
 	if err := h.DB.First(&planet, "name = ?", name).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
