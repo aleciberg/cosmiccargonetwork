@@ -59,7 +59,7 @@ const GalaxyBox: React.FC<GalaxyBoxProps> = ({
       <div className="p-8 bg-miami-blue border-2 border-miami-pink text-black rounded-lg shadow-xl">
         <h1 className="text-2xl font-bold text-miami-pink mb-4">{title}</h1>
         <select
-          className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-miami-pink"
+          className="block w-full bg-miami-blue text-miami-pink p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-miami-pink"
           value={selectedGalaxy}
           onChange={(e) => {
             setSelectedGalaxy(e.target.value); // Update local state
