@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 
 	"cosmicCargoNetwork/internal/api"
 	"cosmicCargoNetwork/internal/config"
@@ -11,6 +12,7 @@ func main() {
 	config.DatabaseInit()
 	db := config.DB()
 	e := echo.New()
+	e.Use(middleware.CORS())
 
 	handler := api.NewHandler(db)
 
