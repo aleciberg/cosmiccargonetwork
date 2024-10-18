@@ -46,9 +46,7 @@ const GalaxyBox: React.FC<PlanetBoxProps> = ({
   }, []);
 
   useEffect(() => {
-    if ("selected gal" + selectedGalaxy) {
-      console.log(selectedGalaxy);
-      console.log("planets " + JSON.stringify(planets));
+    if (selectedGalaxy) {
       const filtered = planets.filter(
         (planet) => planet.galaxy === selectedGalaxy
       );
