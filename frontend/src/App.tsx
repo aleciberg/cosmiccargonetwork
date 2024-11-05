@@ -4,7 +4,7 @@ import GalaxyBox from "./components/GalaxyBox";
 import PlanetBox from "./components/PlanetBox";
 import SummaryBox from "./components/SummaryBox";
 import StarryBackground from "./components/StarryBackground";
-import { Supercluster } from "./types/supercluster";
+import { Supercluster, Galaxy, Planet } from "./types/";
 
 const App: React.FC = () => {
   // Origin Planet Flow
@@ -60,9 +60,9 @@ const App: React.FC = () => {
           <div className="min-h-screen bg-miami-blue flex justify-center items-center">
             <SummaryBox
               title={"Origin Route Summary"}
-              supercluster={selectedDestinationSupercluster}
-              galaxy={selectedDestinationGalaxy}
-              planet={selectedDestinationPlanet}
+              supercluster={selectedOriginSupercluster}
+              galaxy={selectedOriginGalaxy}
+              planet={selectedOriginPlanet}
             />
           </div>
           <div className="min-h-screen bg-miami-blue flex justify-center items-center">

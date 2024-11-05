@@ -72,7 +72,7 @@ const GalaxyBox: React.FC<PlanetBoxProps> = ({
             -- Choose a Galaxy --
           </option>
           {filteredPlanets.map((planet) => (
-            <option key={planet.id} value={planet.name}>
+            <option key={planet.id} value={planet.id}>
               {planet.name}
             </option>
           ))}
