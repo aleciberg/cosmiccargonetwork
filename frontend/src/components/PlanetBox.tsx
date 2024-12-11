@@ -3,8 +3,8 @@ import { Supercluster, Galaxy, Planet } from "../types/";
 
 interface PlanetBoxProps {
   title: string;
-  selectedGalaxy: string;
-  onSelect: (value: string) => void;
+  selectedGalaxy: Galaxy;
+  onSelect: (value: Planet | null) => void;
 }
 
 const GalaxyBox: React.FC<PlanetBoxProps> = ({
@@ -14,7 +14,7 @@ const GalaxyBox: React.FC<PlanetBoxProps> = ({
 }) => {
   const [planets, setPlanets] = useState<Planet[]>([]);
   const [filteredPlanets, setFilteredPlanets] = useState<Planet[]>([]);
-  const [selectedPlanet, setSelectedPlanet] = useState<string>("");
+  const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
 
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -48,7 +48,7 @@ const GalaxyBox: React.FC<PlanetBoxProps> = ({
   useEffect(() => {
     if (selectedGalaxy) {
       const filtered = planets.filter(
-        (planet) => planet.galaxy === selectedGalaxy
+        (planet) => planet.galaxy === selectedGalaxy.id
       );
       setFilteredPlanets(filtered);
     } else {
@@ -56,17 +56,23 @@ const GalaxyBox: React.FC<PlanetBoxProps> = ({
     }
   }, [selectedGalaxy, planets]);
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedId = e.target.value;
+    const selectedPlanetObject =
+      filteredPlanets.find((planet) => planet.id === selectedId) || null;
+
+    setSelectedPlanet(selectedPlanetObject);
+    onSelect(selectedPlanetObject);
+  };
+
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 p-6 mx-auto text-center">
       <div className="p-8 bg-miami-blue border-2 border-miami-pink text-black rounded-lg shadow-xl">
         <h1 className="text-2xl font-bold text-miami-pink mb-4">{title}</h1>
         <select
           className="block w-full bg-miami-blue text-miami-pink p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-miami-pink"
-          value={selectedPlanet}
-          onChange={(e) => {
-            setSelectedPlanet(e.target.value); // Update local state
-            onSelect(e.target.value); // Notify parent about selection
-          }}
+          value={selectedPlanet?.id || ""}
+          onChange={handleSelectChange}
         >
           <option value="" disabled>
             -- Choose a Galaxy --

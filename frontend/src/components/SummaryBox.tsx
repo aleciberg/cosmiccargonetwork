@@ -1,9 +1,10 @@
 import React from "react";
+import { Supercluster, Galaxy, Planet } from "../types/";
 
 interface SummaryBoxProps {
   title: string;
-  planet: string;
-  galaxy: string;
+  planet: Planet;
+  galaxy: Galaxy;
   supercluster: string;
 }
 
@@ -21,10 +22,10 @@ const SummaryBox: React.FC<SummaryBoxProps> = ({
         </h2>
         <ul className="space-y-3 text-lg leading-relaxed">
           <li>
-            <span className="font-semibold">Origin Planet:</span> {planet}
+            <span className="font-semibold">Origin Planet:</span> {planet.name}
           </li>
           <li>
-            <span className="font-semibold">Origin Galaxy:</span> {galaxy}
+            <span className="font-semibold">Origin Galaxy:</span> {galaxy.name}
           </li>
           <li>
             <span className="font-semibold">Origin Supercluster:</span>{" "}
