@@ -4,7 +4,7 @@ import { Supercluster, Galaxy } from "../types/";
 interface GalaxyBoxProps {
   title: string;
   selectedSupercluster: string;
-  onSelect: (value: string) => void;
+  onSelect: (value: Galaxy | null) => void;
 }
 
 const GalaxyBox: React.FC<GalaxyBoxProps> = ({
@@ -14,7 +14,7 @@ const GalaxyBox: React.FC<GalaxyBoxProps> = ({
 }) => {
   const [galaxies, setGalaxies] = useState<Galaxy[]>([]);
   const [filteredGalaxies, setFilteredGalaxies] = useState<Galaxy[]>([]);
-  const [selectedGalaxy, setSelectedGalaxy] = useState<string>("");
+  const [selectedGalaxy, setSelectedGalaxy] = useState<Galaxy | null>(null);
 
   useEffect(() => {
     // Fetch galaxies only when the component mounts
@@ -54,17 +54,23 @@ const GalaxyBox: React.FC<GalaxyBoxProps> = ({
     }
   }, [selectedSupercluster, galaxies]);
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedId = e.target.value;
+    const selectedGalaxyObject =
+      filteredGalaxies.find((galaxy) => galaxy.id === selectedId) || null;
+
+    setSelectedGalaxy(selectedGalaxyObject);
+    onSelect(selectedGalaxyObject);
+  };
+
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 p-6 mx-auto text-center">
       <div className="p-8 bg-miami-blue border-2 border-miami-pink text-black rounded-lg shadow-xl">
         <h1 className="text-2xl font-bold text-miami-pink mb-4">{title}</h1>
         <select
           className="block w-full bg-miami-blue text-miami-pink p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-miami-pink"
-          value={selectedGalaxy}
-          onChange={(e) => {
-            setSelectedGalaxy(e.target.value); // Update local state
-            onSelect(e.target.value); // Notify parent about selection
-          }}
+          value={selectedGalaxy?.id || ""}
+          onChange={handleSelectChange}
         >
           <option value="" disabled>
             -- Choose a Galaxy --
