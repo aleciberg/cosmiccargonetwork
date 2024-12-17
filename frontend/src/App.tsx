@@ -10,19 +10,15 @@ const App: React.FC = () => {
   // Origin Planet Flow
   const [superclusters, setSuperclusters] = useState<Supercluster[]>([]);
   const [selectedOriginSupercluster, setSelectedOriginSupercluster] =
-    useState<string>("");
-  // const [selectedOriginGalaxy, setSelectedOriginGalaxy] = useState<string>("");
+    useState<Supercluster | null>(null);
   const [selectedOriginGalaxy, setSelectedOriginGalaxy] =
     useState<Galaxy | null>(null);
-  // const [selectedOriginPlanet, setSelectedOriginPlanet] = useState<string>("");
   const [selectedOriginPlanet, setSelectedOriginPlanet] =
     useState<Planet | null>(null);
 
   // Destination Planet Flow
   const [selectedDestinationSupercluster, setSelectedDestinationSupercluster] =
-    useState<string>("");
-  // const [selectedDestinationGalaxy, setSelectedDestinationGalaxy] =
-  //   useState<string>("");
+    useState<Supercluster | null>(null);
   const [selectedDestinationGalaxy, setSelectedDestinationGalaxy] =
     useState<Galaxy | null>(null);
   const [selectedDestinationPlanet, setSelectedDestinationPlanet] =

@@ -5,7 +5,7 @@ interface SummaryBoxProps {
   title: string;
   planet: Planet;
   galaxy: Galaxy;
-  supercluster: string;
+  supercluster: Supercluster;
 }
 
 const SummaryBox: React.FC<SummaryBoxProps> = ({
@@ -29,7 +29,7 @@ const SummaryBox: React.FC<SummaryBoxProps> = ({
           </li>
           <li>
             <span className="font-semibold">Origin Supercluster:</span>{" "}
-            {supercluster}
+            {supercluster.name}
           </li>
         </ul>
       </div>

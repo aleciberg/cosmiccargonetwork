@@ -3,7 +3,7 @@ import { Supercluster, Galaxy } from "../types/";
 
 interface GalaxyBoxProps {
   title: string;
-  selectedSupercluster: string;
+  selectedSupercluster: Supercluster;
   onSelect: (value: Galaxy | null) => void;
 }
 
@@ -46,7 +46,7 @@ const GalaxyBox: React.FC<GalaxyBoxProps> = ({
   useEffect(() => {
     if (selectedSupercluster) {
       const filtered = galaxies.filter(
-        (galaxy) => galaxy.supercluster === selectedSupercluster
+        (galaxy) => galaxy.supercluster === selectedSupercluster.id
       );
       setFilteredGalaxies(filtered);
     } else {
