@@ -4,6 +4,7 @@ import GalaxyBox from "./components/GalaxyBox";
 import PlanetBox from "./components/PlanetBox";
 import SummaryBox from "./components/SummaryBox";
 import StarryBackground from "./components/StarryBackground";
+import Layout from "./components/Layout";
 import { Supercluster, Galaxy, Planet } from "./types/";
 
 const App: React.FC = () => {
@@ -23,6 +24,15 @@ const App: React.FC = () => {
     useState<Galaxy | null>(null);
   const [selectedDestinationPlanet, setSelectedDestinationPlanet] =
     useState<Planet | null>(null);
+
+  const resetApp = () => {
+    setSelectedOriginSupercluster(null);
+    setSelectedOriginGalaxy(null);
+    setSelectedOriginPlanet(null);
+    setSelectedDestinationSupercluster(null);
+    setSelectedDestinationGalaxy(null);
+    setSelectedDestinationPlanet(null);
+  };
 
   // Load Superclusters.  Remaining API logic is in components
   useEffect(() => {
@@ -51,7 +61,7 @@ const App: React.FC = () => {
     fetchSuperclusters();
   }, []);
 
-  // Both Selections Made
+  // Both Origin & Destination are selected: show summary boxes side by side.
   if (
     selectedDestinationPlanet &&
     selectedDestinationGalaxy &&
@@ -61,95 +71,98 @@ const App: React.FC = () => {
     selectedOriginSupercluster
   ) {
     return (
-      <div className="min-h-screen bg-miami-blue flex justify-center items-center">
-        <SummaryBox
-          title={"Origin Route Summary"}
-          supercluster={selectedOriginSupercluster}
-          galaxy={selectedOriginGalaxy}
-          planet={selectedOriginPlanet}
-        />
-        <SummaryBox
-          title={"Destination Route Summary"}
-          supercluster={selectedDestinationSupercluster}
-          galaxy={selectedDestinationGalaxy}
-          planet={selectedDestinationPlanet}
-        />
-      </div>
+      <Layout resetApp={resetApp}>
+        <div className="min-h-screen bg-miami-blue flex flex-col lg:flex-row justify-center items-center gap-8 p-8">
+          <SummaryBox
+            title="Origin Route Summary"
+            supercluster={selectedOriginSupercluster}
+            galaxy={selectedOriginGalaxy}
+            planet={selectedOriginPlanet}
+          />
+          <SummaryBox
+            title="Destination Route Summary"
+            supercluster={selectedDestinationSupercluster}
+            galaxy={selectedDestinationGalaxy}
+            planet={selectedDestinationPlanet}
+          />
+        </div>
+      </Layout>
     );
   }
-  // Origin Selected
+  // Origin has been selected: show origin summary and destination selection boxes.
   else if (
     selectedOriginPlanet &&
     selectedOriginGalaxy &&
     selectedOriginSupercluster
   ) {
     return (
-      <div className="relative overflow-hidden">
-        <StarryBackground />
-        {/* This is bugged, supercluster box appears too small */}
-        <div className="min-h-screen bg-miami-blue flex justify-center items-center">
-          <div className="min-h-screen bg-miami-blue flex justify-center items-center">
+      <Layout resetApp={resetApp}>
+        <div className="relative min-h-screen overflow-hidden">
+          <StarryBackground />
+          <div className="min-h-screen bg-miami-blue flex flex-col lg:flex-row justify-center items-center gap-8 p-8">
             <SummaryBox
-              title={"Origin Route Summary"}
+              title="Origin Route Summary"
               supercluster={selectedOriginSupercluster}
               galaxy={selectedOriginGalaxy}
               planet={selectedOriginPlanet}
             />
-          </div>
-          <div className="min-h-screen bg-miami-blue flex justify-center items-center">
-            <SuperclusterBox
-              title="Select a Supercluster"
-              options={superclusters}
-              selectedValue={selectedDestinationSupercluster}
-              onSelect={setSelectedDestinationSupercluster}
-            />
-            {selectedDestinationSupercluster && (
-              <GalaxyBox
-                title={"Select a Galaxy"}
-                selectedSupercluster={selectedDestinationSupercluster}
-                onSelect={setSelectedDestinationGalaxy}
+            <div className="flex flex-col gap-8">
+              <SuperclusterBox
+                title="Select a Destination Supercluster"
+                options={superclusters}
+                selectedValue={selectedDestinationSupercluster}
+                onSelect={setSelectedDestinationSupercluster}
               />
-            )}
-            {selectedDestinationSupercluster && selectedDestinationGalaxy && (
-              <PlanetBox
-                title={"Select a Planet"}
-                selectedGalaxy={selectedDestinationGalaxy}
-                onSelect={setSelectedDestinationPlanet}
-              />
-            )}
+              {selectedDestinationSupercluster && (
+                <GalaxyBox
+                  title="Select a Destination Galaxy"
+                  selectedSupercluster={selectedDestinationSupercluster}
+                  onSelect={setSelectedDestinationGalaxy}
+                />
+              )}
+              {selectedDestinationSupercluster && selectedDestinationGalaxy && (
+                <PlanetBox
+                  title="Select a Destination Planet"
+                  selectedGalaxy={selectedDestinationGalaxy}
+                  onSelect={setSelectedDestinationPlanet}
+                />
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
-  // Beginning Of Selections
+  // No origin selected yet: begin by selecting an origin.
   else {
     return (
-      <div className="relative overflow-hidden">
-        <StarryBackground />
-        <div className="min-h-screen bg-miami-blue flex justify-center items-center">
-          <SuperclusterBox
-            title="Select a Supercluster"
-            options={superclusters}
-            selectedValue={selectedOriginSupercluster}
-            onSelect={setSelectedOriginSupercluster}
-          />
-          {selectedOriginSupercluster && (
-            <GalaxyBox
-              title={"Select a Galaxy"}
-              selectedSupercluster={selectedOriginSupercluster}
-              onSelect={setSelectedOriginGalaxy}
+      <Layout resetApp={resetApp}>
+        <div className="relative min-h-screen overflow-hidden">
+          <StarryBackground />
+          <div className="min-h-screen bg-miami-blue flex flex-col justify-center items-center gap-8 p-8">
+            <SuperclusterBox
+              title="Select an Origin Supercluster"
+              options={superclusters}
+              selectedValue={selectedOriginSupercluster}
+              onSelect={setSelectedOriginSupercluster}
             />
-          )}
-          {selectedOriginSupercluster && selectedOriginGalaxy && (
-            <PlanetBox
-              title={"Select a Planet"}
-              selectedGalaxy={selectedOriginGalaxy}
-              onSelect={setSelectedOriginPlanet}
-            />
-          )}
+            {selectedOriginSupercluster && (
+              <GalaxyBox
+                title="Select an Origin Galaxy"
+                selectedSupercluster={selectedOriginSupercluster}
+                onSelect={setSelectedOriginGalaxy}
+              />
+            )}
+            {selectedOriginSupercluster && selectedOriginGalaxy && (
+              <PlanetBox
+                title="Select an Origin Planet"
+                selectedGalaxy={selectedOriginGalaxy}
+                onSelect={setSelectedOriginPlanet}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 };

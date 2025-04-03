@@ -50,11 +50,9 @@ Coming Soon
 
 ## Usage
 
-To start the project, run:
+To Run Frontend: run `npm start` inside frontend/
 
-```sh
-go run server.go
-```
+To Run Backend: run `air` inside backend/
 
 The server is now running at http://localhost:1323
 
