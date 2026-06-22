@@ -1,4 +1,8 @@
 
+<p align="center">
+  <img src="./backend/assets/image_fx_.png" alt="Cosmic Cargo Network" width="700" style="border-radius: 12px;" />
+</p>
+
 # Cosmic Cargo Network
 
 An intergalactic freight quoting system. Select an origin and destination across 3 superclusters, 9 galaxies, and 50 planets, specify your cargo, and get an itemized shipping quote in credits — factoring in distance, planetary tax rates, political fees, and cargo type.
