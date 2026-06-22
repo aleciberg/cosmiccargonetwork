@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Go build artifacts
+backend/tmp/
+backend/*.db
+backend/server
+
+# OS
+.DS_Store

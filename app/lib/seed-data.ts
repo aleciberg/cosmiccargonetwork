@@ -1,0 +1,177 @@
+import { Supercluster, Galaxy, Planet } from "./types";
+
+export const superclusters: Supercluster[] = [
+  {
+    id: "182b1bd8-5fb2-4b67-8981-ac798d0ac3dc",
+    name: "Supercluster Alpha",
+    numberOfGalaxies: 3,
+    xCoordinate: 132.34,
+    yCoordinate: -569.78,
+    zCoordinate: 9100.01,
+  },
+  {
+    id: "e1d6588f-e07b-48c1-b151-28c03fc553a4",
+    name: "Supercluster Beta",
+    numberOfGalaxies: 3,
+    xCoordinate: -354.56,
+    yCoordinate: 780.9,
+    zCoordinate: -1221.34,
+  },
+  {
+    id: "38e209a4-e821-4b0a-8974-f46f00f36599",
+    name: "Supercluster Gamma",
+    numberOfGalaxies: 3,
+    xCoordinate: 4578.67,
+    yCoordinate: -23.45,
+    zCoordinate: 670.89,
+  },
+];
+
+export const galaxies: Galaxy[] = [
+  // Supercluster Alpha
+  {
+    id: "c671a14f-9552-4707-bc8d-a065597c351a",
+    name: "Acostas",
+    supercluster: "182b1bd8-5fb2-4b67-8981-ac798d0ac3dc",
+    numberOfPlanets: 6,
+    xCoordinate: 167.23,
+    yCoordinate: -459.56,
+    zCoordinate: 7001.89,
+  },
+  {
+    id: "0f023e67-0156-441f-bcf5-d03ff20f60ef",
+    name: "Fright",
+    supercluster: "182b1bd8-5fb2-4b67-8981-ac798d0ac3dc",
+    numberOfPlanets: 5,
+    xCoordinate: 12.45,
+    yCoordinate: -666.89,
+    zCoordinate: 8413.34,
+  },
+  {
+    id: "f2914e97-c74b-4e44-80fe-fa2f6df691ac",
+    name: "Citra",
+    supercluster: "182b1bd8-5fb2-4b67-8981-ac798d0ac3dc",
+    numberOfPlanets: 5,
+    xCoordinate: 889.9,
+    yCoordinate: -1201.34,
+    zCoordinate: 4533.67,
+  },
+  // Supercluster Beta
+  {
+    id: "765487ee-87cd-4f38-b1f3-ac7fd05681b4",
+    name: "Alakakis",
+    supercluster: "e1d6588f-e07b-48c1-b151-28c03fc553a4",
+    numberOfPlanets: 4,
+    xCoordinate: -1244.34,
+    yCoordinate: 457.67,
+    zCoordinate: -2312.45,
+  },
+  {
+    id: "bfe83c9e-e8fc-4d42-828e-7985975c7719",
+    name: "Columbus",
+    supercluster: "e1d6588f-e07b-48c1-b151-28c03fc553a4",
+    numberOfPlanets: 2,
+    xCoordinate: -245.89,
+    yCoordinate: 690.45,
+    zCoordinate: -1337.9,
+  },
+  {
+    id: "c0c45c28-53ee-4cd4-a769-57c8a9202463",
+    name: "D3432",
+    supercluster: "e1d6588f-e07b-48c1-b151-28c03fc553a4",
+    numberOfPlanets: 3,
+    xCoordinate: -789.56,
+    yCoordinate: 910.01,
+    zCoordinate: -1000.34,
+  },
+  // Supercluster Gamma
+  {
+    id: "6f21dba6-9bf5-4d94-9b68-72c06f8007dc",
+    name: "Fractoloah",
+    supercluster: "38e209a4-e821-4b0a-8974-f46f00f36599",
+    numberOfPlanets: 7,
+    xCoordinate: 2355.45,
+    yCoordinate: -12.34,
+    zCoordinate: 560.78,
+  },
+  {
+    id: "2a176758-74ed-43e4-a27c-66881929b91d",
+    name: "Empusheray",
+    supercluster: "38e209a4-e821-4b0a-8974-f46f00f36599",
+    numberOfPlanets: 9,
+    xCoordinate: 4189.78,
+    yCoordinate: 23.45,
+    zCoordinate: 671.89,
+  },
+  {
+    id: "96d608c4-e164-4752-b0ab-690915c6f8ba",
+    name: "Bree",
+    supercluster: "38e209a4-e821-4b0a-8974-f46f00f36599",
+    numberOfPlanets: 9,
+    xCoordinate: 3773.01,
+    yCoordinate: -45.67,
+    zCoordinate: 235.45,
+  },
+];
+
+export const planets: Planet[] = [
+  // Acostas (Supercluster Alpha)
+  { id: "00000000-0000-0000-0000-000000000001", name: "Alderaan", galaxy: "c671a14f-9552-4707-bc8d-a065597c351a", climate: 0, numberOfDocks: 2, taxRate: 15, politicalFee: 100, xCoordinate: 145.57, yCoordinate: -340.59, zCoordinate: 6589.16 },
+  { id: "00000000-0000-0000-0000-000000000002", name: "Arrakis", galaxy: "c671a14f-9552-4707-bc8d-a065597c351a", climate: 1, numberOfDocks: 3, taxRate: 10, politicalFee: 200, xCoordinate: 132.88, yCoordinate: -127.85, zCoordinate: 7249.32 },
+  { id: "00000000-0000-0000-0000-000000000003", name: "Tatooine", galaxy: "c671a14f-9552-4707-bc8d-a065597c351a", climate: 2, numberOfDocks: 1, taxRate: 20, politicalFee: 150, xCoordinate: 124.42, yCoordinate: -331.1, zCoordinate: 5698.88 },
+  { id: "00000000-0000-0000-0000-000000000004", name: "Krypton", galaxy: "c671a14f-9552-4707-bc8d-a065597c351a", climate: 3, numberOfDocks: 4, taxRate: 25, politicalFee: 300, xCoordinate: 188.97, yCoordinate: -70.57, zCoordinate: 6007.01 },
+  { id: "00000000-0000-0000-0000-000000000005", name: "Hoth", galaxy: "c671a14f-9552-4707-bc8d-a065597c351a", climate: 4, numberOfDocks: 2, taxRate: 5, politicalFee: 250, xCoordinate: 199.67, yCoordinate: -671.5, zCoordinate: 5508.45 },
+  { id: "00000000-0000-0000-0000-000000000006", name: "Endor", galaxy: "c671a14f-9552-4707-bc8d-a065597c351a", climate: 5, numberOfDocks: 3, taxRate: 18, politicalFee: 100, xCoordinate: 169.69, yCoordinate: -701.5, zCoordinate: 7900.0 },
+  // Fright (Supercluster Alpha)
+  { id: "00000000-0000-0000-0000-000000000007", name: "Dagobah", galaxy: "0f023e67-0156-441f-bcf5-d03ff20f60ef", climate: 6, numberOfDocks: 2, taxRate: 10, politicalFee: 100, xCoordinate: 19.14, yCoordinate: -624.14, zCoordinate: 8885.54 },
+  { id: "00000000-0000-0000-0000-000000000008", name: "Hoth Prime", galaxy: "0f023e67-0156-441f-bcf5-d03ff20f60ef", climate: 7, numberOfDocks: 1, taxRate: 30, politicalFee: 200, xCoordinate: 6.66, yCoordinate: -599.07, zCoordinate: 8742.71 },
+  { id: "00000000-0000-0000-0000-000000000009", name: "Bespin", galaxy: "0f023e67-0156-441f-bcf5-d03ff20f60ef", climate: 8, numberOfDocks: 3, taxRate: 12, politicalFee: 150, xCoordinate: 7.02, yCoordinate: -601.65, zCoordinate: 9003.62 },
+  { id: "00000000-0000-0000-0000-000000000010", name: "Kamino", galaxy: "0f023e67-0156-441f-bcf5-d03ff20f60ef", climate: 9, numberOfDocks: 4, taxRate: 22, politicalFee: 300, xCoordinate: 10.07, yCoordinate: -603.63, zCoordinate: 9243.09 },
+  { id: "00000000-0000-0000-0000-000000000011", name: "Felucia", galaxy: "0f023e67-0156-441f-bcf5-d03ff20f60ef", climate: 0, numberOfDocks: 3, taxRate: 14, politicalFee: 130, xCoordinate: 6.01, yCoordinate: -669.32, zCoordinate: 8905.88 },
+  // Citra (Supercluster Alpha)
+  { id: "00000000-0000-0000-0000-000000000012", name: "Pandora", galaxy: "f2914e97-c74b-4e44-80fe-fa2f6df691ac", climate: 1, numberOfDocks: 2, taxRate: 16, politicalFee: 140, xCoordinate: 875.61, yCoordinate: -1309.91, zCoordinate: 3972.01 },
+  { id: "00000000-0000-0000-0000-000000000013", name: "Dune", galaxy: "f2914e97-c74b-4e44-80fe-fa2f6df691ac", climate: 2, numberOfDocks: 1, taxRate: 15, politicalFee: 120, xCoordinate: 802.11, yCoordinate: -1059.8, zCoordinate: 4673.01 },
+  { id: "00000000-0000-0000-0000-000000000014", name: "Vulcan", galaxy: "f2914e97-c74b-4e44-80fe-fa2f6df691ac", climate: 3, numberOfDocks: 4, taxRate: 20, politicalFee: 160, xCoordinate: 842.66, yCoordinate: -1083.33, zCoordinate: 4411.01 },
+  { id: "00000000-0000-0000-0000-000000000015", name: "Naboo", galaxy: "f2914e97-c74b-4e44-80fe-fa2f6df691ac", climate: 4, numberOfDocks: 3, taxRate: 5, politicalFee: 180, xCoordinate: 919.19, yCoordinate: -994.93, zCoordinate: 4231.01 },
+  { id: "00000000-0000-0000-0000-000000000016", name: "Oregonia", galaxy: "f2914e97-c74b-4e44-80fe-fa2f6df691ac", climate: 5, numberOfDocks: 2, taxRate: 3, politicalFee: 4, xCoordinate: 904.04, yCoordinate: -1285.31, zCoordinate: 3979.01 },
+  // Alakakis (Supercluster Beta)
+  { id: "00000000-0000-0000-0000-000000000017", name: "Yavin", galaxy: "765487ee-87cd-4f38-b1f3-ac7fd05681b4", climate: 6, numberOfDocks: 3, taxRate: 12, politicalFee: 150, xCoordinate: -1337.77, yCoordinate: 415.89, zCoordinate: -2221.75 },
+  { id: "00000000-0000-0000-0000-000000000018", name: "Ice", galaxy: "765487ee-87cd-4f38-b1f3-ac7fd05681b4", climate: 7, numberOfDocks: 2, taxRate: 25, politicalFee: 180, xCoordinate: -1337.77, yCoordinate: 469.89, zCoordinate: -2002.75 },
+  { id: "00000000-0000-0000-0000-000000000019", name: "Eden", galaxy: "765487ee-87cd-4f38-b1f3-ac7fd05681b4", climate: 8, numberOfDocks: 4, taxRate: 15, politicalFee: 170, xCoordinate: -1443.77, yCoordinate: 466.89, zCoordinate: -2554.75 },
+  { id: "00000000-0000-0000-0000-000000000020", name: "Waterworld", galaxy: "765487ee-87cd-4f38-b1f3-ac7fd05681b4", climate: 9, numberOfDocks: 3, taxRate: 20, politicalFee: 160, xCoordinate: -1592.77, yCoordinate: 499.89, zCoordinate: -2175.75 },
+  // Columbus (Supercluster Beta)
+  { id: "00000000-0000-0000-0000-000000000021", name: "Endor Prime", galaxy: "bfe83c9e-e8fc-4d42-828e-7985975c7719", climate: 0, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: -233.99, yCoordinate: 704.59, zCoordinate: -1470.0 },
+  { id: "00000000-0000-0000-0000-000000000022", name: "Terra Nova", galaxy: "bfe83c9e-e8fc-4d42-828e-7985975c7719", climate: 1, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: -203.19, yCoordinate: 687.21, zCoordinate: -1299.09 },
+  // D3432 (Supercluster Beta)
+  { id: "00000000-0000-0000-0000-000000000023", name: "Gaia", galaxy: "c0c45c28-53ee-4cd4-a769-57c8a9202463", climate: 1, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: -771.49, yCoordinate: 999.93, zCoordinate: -941.11 },
+  { id: "00000000-0000-0000-0000-000000000024", name: "Artemis", galaxy: "c0c45c28-53ee-4cd4-a769-57c8a9202463", climate: 0, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: -762.41, yCoordinate: 1004.13, zCoordinate: -949.11 },
+  { id: "00000000-0000-0000-0000-000000000025", name: "Prometheus", galaxy: "c0c45c28-53ee-4cd4-a769-57c8a9202463", climate: 1, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: -771.49, yCoordinate: 981.83, zCoordinate: -9499.11 },
+  // Fractoloah (Supercluster Gamma)
+  { id: "00000000-0000-0000-0000-000000000026", name: "Borealis", galaxy: "6f21dba6-9bf5-4d94-9b68-72c06f8007dc", climate: 7, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 2173.45, yCoordinate: -15.34, zCoordinate: 661.78 },
+  { id: "00000000-0000-0000-0000-000000000027", name: "Hoth II", galaxy: "6f21dba6-9bf5-4d94-9b68-72c06f8007dc", climate: 7, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 1998.45, yCoordinate: -9.34, zCoordinate: 581.78 },
+  { id: "00000000-0000-0000-0000-000000000028", name: "Pandora Prime", galaxy: "6f21dba6-9bf5-4d94-9b68-72c06f8007dc", climate: 0, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 1799.45, yCoordinate: -44.34, zCoordinate: 595.78 },
+  { id: "00000000-0000-0000-0000-000000000029", name: "Hyperion", galaxy: "6f21dba6-9bf5-4d94-9b68-72c06f8007dc", climate: 7, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 2500.45, yCoordinate: -94.34, zCoordinate: 548.78 },
+  { id: "00000000-0000-0000-0000-000000000030", name: "Aquaria", galaxy: "6f21dba6-9bf5-4d94-9b68-72c06f8007dc", climate: 9, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 2602.45, yCoordinate: 7.34, zCoordinate: 652.78 },
+  { id: "00000000-0000-0000-0000-000000000031", name: "Arrakis Prime", galaxy: "6f21dba6-9bf5-4d94-9b68-72c06f8007dc", climate: 2, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 2431.45, yCoordinate: -11.34, zCoordinate: 590.78 },
+  { id: "00000000-0000-0000-0000-000000000032", name: "Gliese", galaxy: "6f21dba6-9bf5-4d94-9b68-72c06f8007dc", climate: 4, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 2119.45, yCoordinate: -3.34, zCoordinate: 601.78 },
+  // Empusheray (Supercluster Gamma)
+  { id: "00000000-0000-0000-0000-000000000033", name: "Vega", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 1, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 5108.78, yCoordinate: 23.45, zCoordinate: 671.89 },
+  { id: "00000000-0000-0000-0000-000000000034", name: "Orion", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 3, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 6002.78, yCoordinate: 56.45, zCoordinate: 752.89 },
+  { id: "00000000-0000-0000-0000-000000000035", name: "Nereus", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 5, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 5773.78, yCoordinate: 69.45, zCoordinate: 987.89 },
+  { id: "00000000-0000-0000-0000-000000000036", name: "Altair", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 5, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 5329.78, yCoordinate: 92.45, zCoordinate: 432.89 },
+  { id: "00000000-0000-0000-0000-000000000037", name: "Nyx", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 0, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 3999.78, yCoordinate: 26.45, zCoordinate: 716.89 },
+  { id: "00000000-0000-0000-0000-000000000038", name: "Zeta", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 2, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 4007.78, yCoordinate: 64.45, zCoordinate: 432.89 },
+  { id: "00000000-0000-0000-0000-000000000039", name: "Elara", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 8, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 6122.78, yCoordinate: 41.45, zCoordinate: 735.89 },
+  { id: "00000000-0000-0000-0000-000000000040", name: "LeBronia", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 1, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 4159.78, yCoordinate: 11.45, zCoordinate: 1023.89 },
+  { id: "00000000-0000-0000-0000-000000000041", name: "Scranton", galaxy: "2a176758-74ed-43e4-a27c-66881929b91d", climate: 1, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 4789.78, yCoordinate: 19.45, zCoordinate: 490.89 },
+  // Bree (Supercluster Gamma)
+  { id: "00000000-0000-0000-0000-000000000042", name: "Cannabitica", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 8, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 4200.01, yCoordinate: -42.0, zCoordinate: 420.42 },
+  { id: "00000000-0000-0000-0000-000000000043", name: "Portlandia", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 5, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 2998.01, yCoordinate: -55.67, zCoordinate: 231.45 },
+  { id: "00000000-0000-0000-0000-000000000044", name: "Caladan", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 0, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 3417.01, yCoordinate: -5.67, zCoordinate: 233.45 },
+  { id: "00000000-0000-0000-0000-000000000045", name: "Seas of Grass", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 1, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 3932.01, yCoordinate: -66.67, zCoordinate: 234.45 },
+  { id: "00000000-0000-0000-0000-000000000046", name: "Dune 2", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 2, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 3335.01, yCoordinate: -90.67, zCoordinate: 237.45 },
+  { id: "00000000-0000-0000-0000-000000000047", name: "Pridelands", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 1, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 3017.01, yCoordinate: -41.67, zCoordinate: 241.45 },
+  { id: "00000000-0000-0000-0000-000000000048", name: "Higherlands", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 8, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 3276.01, yCoordinate: -34.67, zCoordinate: 286.45 },
+  { id: "00000000-0000-0000-0000-000000000049", name: "Buriedaldia", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 2, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 4009.01, yCoordinate: -51.67, zCoordinate: 302.45 },
+  { id: "00000000-0000-0000-0000-000000000050", name: "Tblisis", galaxy: "96d608c4-e164-4752-b0ab-690915c6f8ba", climate: 3, numberOfDocks: 2, taxRate: 10, politicalFee: 150, xCoordinate: 3889.01, yCoordinate: -87.67, zCoordinate: 307.45 },
+];

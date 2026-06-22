@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Deep Space Nebula Theme */
+  --space-void: #000000;
+  --space-dark: #0a0e27;
+  --space-gray: #1a1f3a;
+  --nebula-purple: #8b5cf6;
+  --nebula-purple-light: #a78bfa;
+  --nebula-purple-dark: #6b46c1;
+  --star-gold: #fbbf24;
+  --star-gold-light: #fcd34d;
+  --planet-green: #10b981;
+  --asteroid-orange: #f59e0b;
+  --supernova-red: #ef4444;
+  --starlight-white: #f8fafc;
+  --starlight-gray: #e2e8f0;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--space-dark);
+  --color-foreground: var(--text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Space Theme Colors */
+  --color-space-void: var(--space-void);
+  --color-space-dark: var(--space-dark);
+  --color-space-gray: var(--space-gray);
+  --color-nebula-purple: var(--nebula-purple);
+  --color-nebula-purple-light: var(--nebula-purple-light);
+  --color-nebula-purple-dark: var(--nebula-purple-dark);
+  --color-star-gold: var(--star-gold);
+  --color-star-gold-light: var(--star-gold-light);
+  --color-planet-green: var(--planet-green);
+  --color-asteroid-orange: var(--asteroid-orange);
+  --color-supernova-red: var(--supernova-red);
+  --color-starlight-white: var(--starlight-white);
+  --color-starlight-gray: var(--starlight-gray);
+  
+  /* Legacy support (for backward compatibility) */
+  --color-miami-blue: var(--nebula-purple);
+  --color-miami-pink: var(--nebula-purple);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--space-dark);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.glow-purple-strong {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.8), 0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+.glow-gold {
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5), 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+/* Subtle starfield background pattern */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.starfield {
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 40%, white, transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  animation: starfield 20s linear infinite;
+}
+
+@keyframes starfield {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }

@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: cosmiccargonetwork
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./backend/db/init:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    ports:
+      - "1323:1323"
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: root
+      DB_NAME: cosmiccargonetwork
+      DB_PORT: 5432
+      JWT_SECRET: change-this-secret-in-production
+      ALLOWED_ORIGIN: http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: on-failure
+
+volumes:
+  postgres_data:
